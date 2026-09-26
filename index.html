@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>حكاية آلاء وبسملة</title>
+<link rel="icon" type="image/png" href="LOGO.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Great+Vibes&family=Lalezar&family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FBF3F1;
+    --bg-alt:#F6E3DF;
+    --card:#FFFFFF;
+    --ink:#4A2E30;
+    --ink-soft:#8C6367;
+    --ink-faint:#C6A6A9;
+    --sage:#D98A93;
+    --sage-deep:#B05966;
+    --sage-pale:#F7DEE0;
+    --rose:#E2647B;
+    --rose-pale:#FBDCE1;
+    --line:rgba(74,46,48,.12);
+    --shadow: 0 16px 34px rgba(74,46,48,.14);
+    --thread: repeating-linear-gradient(to bottom, var(--sage) 0 6px, transparent 6px 14px);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg); color:var(--ink); font-family:'Tajawal',sans-serif; overflow-x:hidden;}
+  h1,h2,h3,.display{font-family:'Great Vibes',cursive; font-weight:400; letter-spacing:.5px;}
+  .eyebrow{font-family:'Tajawal'; font-weight:700; font-size:.78rem; letter-spacing:3px; color:var(--sage-deep); text-transform:uppercase;}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 24px;}
+  section{padding:50px 0;}
+  .alt{background:var(--bg-alt);}
+  .section-head{text-align:center; margin-bottom:28px;}
+  .section-head h2{font-family:'Aref Ruqaa', serif ,cursive; font-size:clamp(2.5rem,6vw,3.6rem); margin-top:8px;}
+  button{font-family:'Tajawal'; cursor:pointer;}
+
+  /* ===== HERO ===== */
+  .hero{
+    position:relative; min-height:92vh; display:flex; align-items:center; justify-content:center;
+    text-align:center; padding:70px 24px; overflow:hidden; color:var(--ink);
+  }
+
+  .hero-center{position:relative; z-index:1; max-width:640px;}
+
+  /* صورة الهيرو: مستطيل عادي بدل القلب */
+  .photo-frame{
+    position:relative; width:230px; max-width:70vw; min-height:280px; margin:0 auto 6px;
+    border-radius:14px; overflow:hidden; box-shadow:var(--shadow); border:4px solid var(--card);
+    background:linear-gradient(135deg,#F6E3DF,#E9B8C0);
+    opacity:0;
+    animation:heroFadeUp .9s ease .25s both, heartPulse 2.6s ease-in-out 1.4s infinite;
+  }
+  .photo-frame-img{width:100%; height:auto; display:block;}
+  @keyframes heartPulse{0%,100%{transform:scale(1);} 50%{transform:scale(1.03);}}
+
+  .heart-sparkles{position:absolute; inset:0; pointer-events:none;}
+  .heart-sparkles span{position:absolute; top:50%; left:50%; color:var(--sage-deep); font-size:1rem; opacity:0;
+    animation:burst .7s ease-out 1.1s forwards;}
+  .heart-sparkles span:nth-child(1){--tx:-78px; --ty:-46px;}
+  .heart-sparkles span:nth-child(2){--tx:78px;  --ty:-46px;}
+  .heart-sparkles span:nth-child(3){--tx:-96px; --ty:14px;}
+  .heart-sparkles span:nth-child(4){--tx:96px;  --ty:14px;}
+  .heart-sparkles span:nth-child(5){--tx:-44px; --ty:-86px;}
+  .heart-sparkles span:nth-child(6){--tx:44px;  --ty:-86px;}
+  @keyframes burst{
+    0%{transform:translate(-50%,-50%) scale(.2); opacity:0;}
+    30%{opacity:1;}
+    100%{transform:translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(1); opacity:0;}
+  }
+
+  .hero .eyebrow{color:var(--sage-deep); margin-bottom:14px;
+    animation:heroFadeUp .8s ease 1.25s both;}
+  .hero h1{font-size:clamp(3rem,8vw,5.4rem); line-height:1.05;
+    animation:heroFadeUp .9s ease 1.4s both;}
+  .hero h1 span{color:var(--rose); display:inline-block;
+    animation:nameHeartbeat 1.8s ease-in-out 2.6s infinite;}
+  .hero-underline{width:230px; margin:8px auto 0;}
+  .hero-underline path{stroke-dasharray:320; stroke-dashoffset:320; animation:drawLine 1s ease 1.95s forwards;}
+  @keyframes drawLine{to{stroke-dashoffset:0;}}
+  .hero p.sub{max-width:480px; margin:22px auto 0; font-size:1.05rem; line-height:1.9; color:var(--ink-soft);
+    animation:heroFadeUp .9s ease 2.15s both;}
+  @keyframes heroFadeUp{from{opacity:0; transform:translateY(20px);} to{opacity:1; transform:translateY(0);}}
+  @keyframes nameHeartbeat{0%,100%{transform:scale(1);} 50%{transform:scale(1.28);}}
+
+  /* ===== NOTE / LETTER CARD ===== */
+  .note{max-width:640px; margin:0 auto; background:var(--card); padding:46px 40px; border-radius:6px;
+    position:relative; box-shadow:var(--shadow); font-size:1.08rem; line-height:2.1; border:1px solid var(--line);}
+  .note::before{content:''; position:absolute; top:-12px; right:38px; width:64px; height:22px;
+    background:rgba(226,100,123,.35); transform:rotate(-6deg);}
+  .note .signoff{display:block; margin-top:18px; font-family:'Lalezar'; font-size:1.3rem; color:var(--rose);}
+
+  /* ===== TIMELINE ===== */
+  .timeline{position:relative; max-width:760px; margin:0 auto;}
+  .timeline::before{content:''; position:absolute; top:0; bottom:0; right:50%; width:2px; background:var(--thread); transform:translateX(1px);}
+  .t-item{position:relative; width:50%; padding:0 40px 66px;}
+  .t-item:nth-child(odd){padding-right:40px; text-align:left;}
+  .t-item:nth-child(even){margin-right:50%; padding-left:40px; text-align:right;}
+  .t-dot{position:absolute; top:4px; width:14px; height:14px; border-radius:50%; background:var(--sage);
+    box-shadow:0 0 0 5px var(--bg), 0 0 0 6px var(--sage);}
+  .t-item:nth-child(odd) .t-dot{right:-7px;} .t-item:nth-child(even) .t-dot{left:-7px;}
+  .t-year{font-family:'Lalezar'; color:var(--sage-deep); font-size:1.4rem;}
+  .t-card{background:var(--card); padding:22px 24px; border-radius:6px; margin-top:10px; box-shadow:var(--shadow);
+    border:1px solid var(--line); border-top:3px solid var(--rose);}
+  .t-card h3{font-weight:500; font-size:1.05rem; margin-bottom:6px;}
+  .t-card p{font-size:.93rem; line-height:1.8; color:var(--ink-soft);}
+
+  /* ===== LIVE FRIENDSHIP COUNTER ===== */
+  .counter-grid{display:flex; justify-content:center; gap:22px; flex-wrap:wrap; max-width:640px; margin:0 auto;}
+  .counter-box{background:var(--card); border:1px solid var(--line); border-top:3px solid var(--rose);
+    border-radius:10px; padding:26px 30px; min-width:120px; text-align:center; box-shadow:var(--shadow);}
+  .counter-box b{display:block; font-family:'Lalezar'; font-size:2.4rem; color:var(--sage-deep); transition:transform .25s;}
+  .counter-box span{font-size:.82rem; color:var(--ink-faint); letter-spacing:1px;}
+  .counter-note{text-align:center; margin-top:22px; font-size:.85rem; color:var(--ink-faint);}
+
+  /* ===== confetti / celebration burst ===== */
+  .confetti-piece{position:fixed; top:-40px; z-index:9999; pointer-events:none; line-height:1;
+    animation:confettiFall linear forwards;}
+  @keyframes confettiFall{
+    0%{transform:translateY(0) rotate(0deg); opacity:1;}
+    100%{transform:translateY(112vh) rotate(360deg); opacity:0;}
+  }
+
+  /* ===== THEN & NOW ===== */
+  .shahada{
+    width: 500px;
+     border-radius:8px;
+    color:rgba(43,42,38,.35); font-size:2rem; box-shadow:var(--shadow); border:1px solid var(--line);
+    width:100%; object-fit:cover;
+  }
+  .then-now{display:flex; align-items:center; justify-content:center; gap:28px; flex-wrap:wrap; max-width:820px; margin:0 auto;}
+  .tn-photo{width:280px; max-width:42vw;}
+  .photo-ph{border-radius:8px; display:block;
+    color:rgba(43,42,38,.35); font-size:2rem; box-shadow:var(--shadow); border:1px solid var(--line);
+    width:100%; height:auto;}
+  .tn-photo:first-child .photo-ph{background:linear-gradient(135deg,#F6E3DF,#E9C4C9);}
+  .tn-photo:last-child .photo-ph{background:linear-gradient(135deg,#FBDCE1,#E2647B);}
+  .tn-photo p{text-align:center; margin-top:12px; font-weight:700; color:var(--ink-soft);}
+  .tn-arrow{font-size:1.8rem; color:var(--sage);}
+
+  /* ===== GALLERY ===== */
+  .gallery{display:grid; grid-template-columns:repeat(3,1fr); gap:26px; max-width:920px; margin:0 auto;}
+  .polaroid{background:var(--card); padding:12px 12px 36px; box-shadow:var(--shadow); transition:transform .25s ease; border:1px solid var(--line);}
+  .polaroid:nth-child(3n+1){transform:rotate(-2deg);} .polaroid:nth-child(3n+2){transform:rotate(1.4deg);} .polaroid:nth-child(3n){transform:rotate(-1deg);}
+  .polaroid:hover{transform:rotate(0) scale(1.05); z-index:5;}
+  .photo-placeholder{width:100%; height:auto; display:block; border-radius:2px; background:linear-gradient(135deg,#F6E3DF,#E9B8C0); color:rgba(74,46,48,.35); font-size:1.8rem;}
+  .polaroid figcaption{text-align:center; font-weight:500; color:var(--ink); margin-top:10px; font-size:.85rem;}
+  @media(max-width:700px){.gallery{grid-template-columns:repeat(2,1fr);}}
+
+  /* ===== FUNNY MOMENTS ===== */
+  .funny-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:22px; max-width:920px; margin:0 auto;}
+  .funny-card{background:var(--rose-pale); border-right:3px solid var(--rose); padding:22px 24px; border-radius:6px;}
+  .funny-card p{font-size:.98rem; line-height:1.85;}
+  .funny-card .tag{display:block; margin-top:12px; font-size:.78rem; color:var(--rose); font-weight:700;}
+
+  /* ===== VOICE / VIDEO ===== */
+  .media-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:24px; max-width:820px; margin:0 auto;}
+  .media-card{background:var(--card); border:1px solid var(--line); border-radius:10px; padding:26px 24px; box-shadow:var(--shadow);}
+  .media-card h3{font-size:1.05rem; margin-bottom:14px; display:flex; align-items:center; gap:8px;}
+  .media-card audio, .media-card video{width:100%; border-radius:6px;}
+  .media-card .hint{margin-top:10px; font-size:.8rem; color:var(--ink-faint);}
+  .video-wrap{max-width:380px; margin:0 auto;}
+  .video-ph{width:100%; aspect-ratio:16/9; border-radius:10px; background:linear-gradient(135deg,#F6E3DF,#E9B8C0);
+    display:flex; align-items:center; justify-content:center; font-size:2.2rem; color:rgba(74,46,48,.35); margin-bottom:14px;}
+
+  /* ===== PLACES ===== */
+  .places{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px; max-width:920px; margin:0 auto;}
+  .place{background:var(--card); border:1px solid var(--line); padding:26px 22px; border-radius:8px; text-align:center; box-shadow:var(--shadow);}
+  .place .icon{font-size:1.8rem; margin-bottom:10px; display:block;}
+  .place h4{font-weight:700; margin-bottom:6px; color:var(--sage-deep);}
+  .place p{font-size:.85rem; color:var(--ink-soft); line-height:1.7;}
+
+  /* ===== STATS ===== */
+  .stats{display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:20px; max-width:900px; margin:0 auto; text-align:center;}
+  .stat b{display:block; font-family:'Lalezar'; font-size:2.8rem; color:var(--sage-deep);}
+  .stat span{font-size:.85rem; color:var(--ink-faint); letter-spacing:1px;}
+
+  /* ===== BUCKET LIST ===== */
+  .bucket-wrap{display:grid; grid-template-columns:1fr 1fr; gap:30px; max-width:820px; margin:0 auto;}
+  .bucket-add{display:flex; gap:10px; max-width:820px; margin:0 auto 30px;}
+  .bucket-input{
+    flex:1; font-family:'Tajawal'; font-size:.92rem; padding:12px 16px; border-radius:8px;
+    border:1px solid var(--line); background:var(--card); color:var(--ink);
+  }
+  .bucket-input:focus{ outline:2px solid var(--sage); }
+  .bucket-add-btn{
+    background:var(--sage); color:#fff; border:none; border-radius:8px; padding:12px 22px;
+    font-size:.9rem; font-weight:700; box-shadow:var(--shadow); transition:background .2s ease, transform .2s ease;
+  }
+  .bucket-add-btn:hover{ background:var(--sage-deep); }
+  .bucket-add-btn:active{ transform:scale(.96); }
+  .bucket-col h3{font-size:1rem; margin-bottom:16px; color:var(--sage-deep);}
+  .bucket-list{list-style:none; display:flex; flex-direction:column; gap:10px;}
+  .bucket-item{background:var(--card); border:1px solid var(--line); border-radius:8px; padding:14px 16px;
+    display:flex; align-items:center; gap:12px; cursor:pointer; box-shadow:var(--shadow); transition:opacity .25s;}
+  .bucket-item .box{width:20px; height:20px; border-radius:5px; border:2px solid var(--sage); flex:none; display:flex; align-items:center; justify-content:center; font-size:.75rem; color:#fff;}
+  .bucket-item .txt{flex:1;}
+  .bucket-item.done{opacity:.55;}
+  .bucket-item.done .box{background:var(--sage);}
+  .bucket-item.done span.txt{text-decoration:line-through;}
+  .bucket-item .del-btn{
+    flex:none; width:24px; height:24px; border-radius:50%; border:none;
+    background:transparent; color:var(--ink-faint); font-size:.85rem;
+    display:flex; align-items:center; justify-content:center;
+    transition: background .2s ease, color .2s ease;
+  }
+  .bucket-item .del-btn:hover{ background:#F3D8D3; color:#C0392B; }
+  .bucket-empty{color:var(--ink-faint); font-size:.85rem; text-align:center; padding:20px 0;}
+  @media(max-width:640px){.bucket-wrap{grid-template-columns:1fr;} .bucket-add{flex-direction:column;}}
+
+  /* ===== MEMORY BOOK (الفضايح) ===== */
+  .book-outer{display:flex; flex-direction:column; align-items:center; gap:24px;}
+  .book{position:relative; width:min(520px,92vw); perspective:1800px;}
+  .page{position:relative; width:100%; background:var(--card); border-radius:16px; box-shadow:var(--shadow);
+    border:1px solid var(--line); padding:22px 22px 26px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;
+    transform-origin:100% 50%; backface-visibility:hidden;}
+  .page .ph{width:100%; aspect-ratio:4/5; max-height:60vh; border-radius:12px; background:linear-gradient(135deg,#F6E3DF,#E9B8C0); margin-bottom:0; overflow:hidden;
+    display:flex; align-items:center; justify-content:center; color:rgba(74,46,48,.35); font-size:1.6rem;}
+  .page .ph img{width:100%; height:100%; object-fit:contain; display:block;}
+  .page .ph video{width:100%; height:100%; object-fit:contain; display:block;}
+  .page h4{font-size:1.1rem; margin-bottom:8px; color:var(--sage-deep);}
+  .page p{font-size:.92rem; color:var(--ink-soft); line-height:1.7;}
+  .page.turning{transition:transform .6s ease; transform:rotateY(-150deg);}
+  .book-nav{display:flex; align-items:center; justify-content:center; gap:20px;}
+  .book-nav button{
+    background:var(--card); border:1px solid var(--line); width:46px; height:46px; border-radius:50%;
+    font-size:1.15rem; color:var(--sage-deep); box-shadow:var(--shadow);
+    display:flex; align-items:center; justify-content:center;
+    transition: background .2s ease, transform .2s ease;
+  }
+  .book-nav button:hover{ background:var(--sage-pale); transform:scale(1.08); }
+  .book-nav button:active{ transform:scale(.94); }
+  .book-nav span{
+    font-size:.82rem; color:var(--ink-soft); font-weight:700;
+    background:var(--bg-alt); padding:8px 18px; border-radius:999px; border:1px solid var(--line);
+  }
+
+  /* ===== زرار الفضايح ===== */
+  .scandal-wrap{text-align:center;}
+  .scandal-btn{
+    display:inline-block; margin:0 auto; background:var(--rose); color:#fff; border:none; border-radius:40px;
+    padding:18px 46px; font-size:1.15rem; font-weight:700; box-shadow:var(--shadow);
+    transition:transform .2s ease, background .2s ease;
+  }
+  .scandal-btn:hover{background:var(--sage-deep); transform:scale(1.06);}
+  .scandal-btn:active{transform:scale(.97);}
+
+  footer{text-align:center; padding:70px 24px 50px; color:var(--ink-faint); font-size:.85rem; border-top:1px solid var(--line);}
+  footer .display{color:var(--sage-deep); font-size:1.4rem; display:block; margin-bottom:10px;}
+
+  .reveal{opacity:0; transform:translateY(26px); transition:opacity .8s ease, transform .8s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  @media(max-width:640px){
+    .t-item, .t-item:nth-child(odd), .t-item:nth-child(even){width:100%; margin:0; padding:0 0 0 34px; text-align:right !important;}
+    .timeline::before{right:12px; transform:none;}
+    .t-item:nth-child(odd) .t-dot, .t-item:nth-child(even) .t-dot{right:6px; left:auto;}
+    .gallery{grid-template-columns:repeat(2,1fr);}
+  }
+  @media(prefers-reduced-motion:reduce){*{animation:none !important; transition:none !important;}}
+  .brand-credit{
+  display:block;
+  text-align:center;
+  margin-top:18px;
+  font-size:12px;
+  color: rgba(42, 47, 53, 0.5);
+  text-decoration:none;
+  transition: color .2s ease;
+}
+.brand-credit span{ color: var(--blue); font-weight:700; }
+.brand-credit:hover{ color: var(--blue-deep); }
+
+/* ===== بوابة كلمة السر ===== */
+.pw-gate{
+  position:fixed; inset:0; z-index:20000;
+  background: radial-gradient(ellipse 900px 600px at 50% 0%, var(--bg-alt) 0%, var(--bg) 60%);
+  display:flex; align-items:center; justify-content:center;
+  padding:24px;
+  transition: opacity .6s ease;
+}
+.pw-gate.hidden{ opacity:0; pointer-events:none; }
+.pw-gate-inner{
+  width:100%; max-width:360px;
+  display:flex; flex-direction:column; align-items:center;
+  text-align:center;
+}
+.pw-gate-photo-wrap{
+  position:relative;
+  width:190px; max-width:60vw;
+  min-height:220px;
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow: var(--shadow);
+  border: 4px solid var(--card);
+  margin-bottom:22px;
+  background: linear-gradient(135deg,#F6E3DF,#E9B8C0);
+}
+.pw-gate-photo{
+  width:100%; height:auto; display:block;
+  background: linear-gradient(135deg,#F6E3DF,#E9B8C0);
+}
+.pw-gate-caption{
+  position:absolute; inset:0;
+  display:flex; align-items:flex-end; justify-content:center;
+  padding:18px;
+  background: linear-gradient(0deg, rgba(74,46,48,.72) 0%, rgba(74,46,48,.05) 55%);
+  font-family:'Aref Ruqaa', serif;
+  font-size:1.35rem;
+  color:#fff;
+  transition: opacity .4s ease;
+}
+.pw-gate-caption.hide{ opacity:0; }
+.pw-gate-celebrate{
+  position:absolute; inset:0;
+  display:flex; align-items:center; justify-content:center;
+  font-size:2.4rem;
+  opacity:0;
+  transition: opacity .4s ease;
+}
+.pw-gate-celebrate.show{ opacity:1; animation:heartPulse 1s ease-in-out infinite; }
+.pw-gate-form{
+  width:100%; max-width:300px;
+  display:flex; flex-direction:column; gap:12px;
+}
+.pw-gate-input{
+  width:100%; font-family:'Tajawal'; font-size:1rem; text-align:center;
+  padding:14px 16px; border-radius:10px; border:1px solid var(--line);
+  background:var(--card); color:var(--ink); letter-spacing:2px;
+}
+.pw-gate-input:focus{ outline:2px solid var(--sage); }
+.pw-gate-input.wrong{ border-color:#C0392B; outline:2px solid #C0392B; animation:shake .35s ease; }
+.pw-gate-btn{
+  background:var(--rose); color:#fff; border:none; border-radius:30px; padding:14px 20px;
+  font-family:'Tajawal'; font-weight:700; font-size:1rem; box-shadow:var(--shadow);
+  transition:transform .2s ease, background .2s ease;
+}
+.pw-gate-btn:hover{ transform:scale(1.03); background:var(--sage-deep); }
+.pw-gate-btn:active{ transform:scale(.97); }
+.pw-gate-error{ font-size:.85rem; color:#C0392B; }
+body.gate-locked{ overflow:hidden; }
+@keyframes shake{
+  0%,100%{transform:translateX(0);}
+  20%{transform:translateX(-6px);}
+  40%{transform:translateX(6px);}
+  60%{transform:translateX(-4px);}
+  80%{transform:translateX(4px);}
+}
+
+/* ====================================================================
+   ✦✦✦  طبقة الحركة الإبداعية — CSS فقط، من غير أي تعديل في الجافاسكريبت  ✦✦✦
+   ==================================================================== */
+
+/* خلفية حية خفيفة بتتحرك ورا الصفحة كلها */
+body{ position:relative; }
+body::before{
+  content:""; position:fixed; inset:-10%; z-index:-1; pointer-events:none;
+  background:
+    radial-gradient(420px circle at 12% 18%, rgba(226,100,123,.10), transparent 60%),
+    radial-gradient(520px circle at 88% 12%, rgba(217,138,147,.10), transparent 60%),
+    radial-gradient(480px circle at 20% 90%, rgba(251,220,225,.35), transparent 60%);
+  animation:bgDrift 22s ease-in-out infinite alternate;
+}
+@keyframes bgDrift{
+  0%{ transform:translate(0,0) scale(1); }
+  100%{ transform:translate(-3%,3%) scale(1.08); }
+}
+
+/* ---------- Keyframes مشتركة ---------- */
+@keyframes floatY{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-14px); } }
+@keyframes floatYRot{ 0%,100%{ transform:translateY(0) rotate(0deg); } 50%{ transform:translateY(-10px) rotate(3deg); } }
+@keyframes ringPulse{
+  0%{ box-shadow:0 0 0 0 rgba(226,100,123,.55); }
+  70%,100%{ box-shadow:0 0 0 16px rgba(226,100,123,0); }
+}
+@keyframes glowPulse{
+  0%,100%{ text-shadow:0 0 0 rgba(217,138,147,0); }
+  50%{ text-shadow:0 0 18px rgba(217,138,147,.55); }
+}
+@keyframes sweep{
+  0%{ background-position:150% 0; }
+  55%,100%{ background-position:-50% 0; }
+}
+@keyframes dashGrow{ to{ width:44px; } }
+@keyframes threadFlow{ to{ background-position:0 28px; } }
+
+/* ---------- العناوين وشرطة الـ eyebrow ---------- */
+.eyebrow{ position:relative; display:inline-block; }
+.section-head .eyebrow::after{
+  content:""; display:block; height:2px; width:0; margin:8px auto 0;
+  background:linear-gradient(90deg,var(--sage),var(--rose));
+  animation:dashGrow .8s ease forwards; animation-play-state:paused;
+}
+.reveal.in .eyebrow::after{ animation-play-state:running; }
+.section-head h2{ animation:glowPulse 5s ease-in-out infinite; }
+
+/* ---------- ظهور العناصر (reveal) أكتر حيوية ---------- */
+.reveal{
+  opacity:0; transform:translateY(34px) scale(.97); filter:blur(5px);
+  transition:opacity .85s cubic-bezier(.2,.75,.2,1), transform .85s cubic-bezier(.2,.75,.2,1), filter .85s ease;
+}
+.reveal.in{ opacity:1; transform:translateY(0) scale(1); filter:blur(0); }
+
+/* تعاقب دخول العناصر داخل الشبكات المختلفة */
+.gallery .polaroid:nth-child(1).reveal, .funny-grid .funny-card:nth-child(1).reveal,
+.places .place:nth-child(1).reveal, .stats .stat:nth-child(1).reveal,
+.media-grid .media-card:nth-child(1).reveal,
+.counter-grid .counter-box:nth-child(1).reveal, .timeline .t-item:nth-child(1).reveal{ transition-delay:.04s; }
+.gallery .polaroid:nth-child(2).reveal, .funny-grid .funny-card:nth-child(2).reveal,
+.places .place:nth-child(2).reveal, .stats .stat:nth-child(2).reveal,
+.media-grid .media-card:nth-child(2).reveal,
+.counter-grid .counter-box:nth-child(2).reveal, .timeline .t-item:nth-child(2).reveal{ transition-delay:.1s; }
+.gallery .polaroid:nth-child(3).reveal, .funny-grid .funny-card:nth-child(3).reveal,
+.places .place:nth-child(3).reveal, .stats .stat:nth-child(3).reveal,
+.media-grid .media-card:nth-child(3).reveal,
+.counter-grid .counter-box:nth-child(3).reveal, .timeline .t-item:nth-child(3).reveal{ transition-delay:.16s; }
+.gallery .polaroid:nth-child(4).reveal, .funny-grid .funny-card:nth-child(4).reveal,
+.stats .stat:nth-child(4).reveal,
+.timeline .t-item:nth-child(4).reveal{ transition-delay:.22s; }
+.gallery .polaroid:nth-child(5).reveal{ transition-delay:.28s; }
+.gallery .polaroid:nth-child(6).reveal{ transition-delay:.34s; }
+.gallery .polaroid:nth-child(7).reveal{ transition-delay:.4s; }
+.gallery .polaroid:nth-child(8).reveal{ transition-delay:.46s; }
+.gallery .polaroid:nth-child(9).reveal{ transition-delay:.52s; }
+
+/* ---------- الهيرو ---------- */
+.hero-center{ position:relative; }
+.hero-center::before, .hero-center::after{
+  content:"✦"; position:absolute; color:var(--sage); font-size:1.1rem; opacity:.55; pointer-events:none;
+  animation:floatYRot 6s ease-in-out infinite;
+}
+.hero-center::before{ top:-6%; left:-14%; animation-delay:0s; }
+.hero-center::after{ top:6%; right:-16%; animation-delay:1.4s; font-size:1.4rem; color:var(--rose); }
+
+/* ---------- الخط الزمني ---------- */
+.timeline::before{ animation:threadFlow 1.4s linear infinite; }
+.t-dot{ animation:ringPulse 2.6s ease-out infinite; }
+.t-item:nth-child(2) .t-dot{ animation-delay:.5s; }
+.t-item:nth-child(3) .t-dot{ animation-delay:1s; }
+.t-card{ transition:transform .35s ease, box-shadow .35s ease; }
+.t-card:hover{ transform:translateY(-6px); box-shadow:0 22px 40px rgba(74,46,48,.22); }
+
+/* ---------- عداد الصداقة ---------- */
+.counter-box{ transition:transform .3s ease, box-shadow .3s ease; }
+.counter-box:hover{ transform:translateY(-6px) rotate(-1deg); box-shadow:0 22px 40px rgba(74,46,48,.22); }
+.counter-box b{ animation:glowPulse 3.4s ease-in-out infinite; }
+
+/* ---------- الصور (بولارويد) ---------- */
+.polaroid{ animation:floatY 7s ease-in-out infinite; }
+.polaroid:nth-child(2n){ animation-delay:-1.6s; }
+.polaroid:nth-child(3n){ animation-delay:-3.2s; }
+.polaroid:hover{ animation-play-state:paused; }
+
+/* ---------- الكروت المضحكة والأماكن والصوتيات ---------- */
+.funny-card, .place, .media-card{ transition:transform .3s ease, box-shadow .3s ease; }
+.funny-card:hover{ transform:translateY(-6px) rotate(-.6deg); box-shadow:0 18px 34px rgba(226,100,123,.22); }
+.place:hover{ transform:translateY(-6px); box-shadow:0 22px 40px rgba(74,46,48,.2); }
+.place .icon{ display:inline-block; animation:floatY 4.5s ease-in-out infinite; }
+.place:nth-child(2) .icon{ animation-delay:-1.5s; }
+.place:nth-child(3) .icon{ animation-delay:-3s; }
+.media-card:hover{ transform:translateY(-6px); box-shadow:0 22px 40px rgba(74,46,48,.2); }
+
+/* ---------- الأرقام ---------- */
+.stat b{ animation:glowPulse 3.2s ease-in-out infinite; }
+.stat{ transition:transform .3s ease; }
+.stat:hover{ transform:translateY(-6px) scale(1.05); }
+
+/* ---------- قائمة الأحلام والأزرار ---------- */
+.bucket-item{ transition:transform .25s ease, box-shadow .25s ease, opacity .25s ease; }
+.bucket-item:hover{ transform:translateX(-6px); box-shadow:0 16px 30px rgba(74,46,48,.2); }
+.bucket-add-btn, .pw-gate-btn, .scandal-btn{ position:relative; overflow:hidden; }
+.bucket-add-btn::after, .pw-gate-btn::after, .scandal-btn::after{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background:linear-gradient(110deg,transparent 35%,rgba(255,255,255,.55) 50%,transparent 65%);
+  background-size:250% 100%; background-position:150% 0;
+  animation:sweep 3.6s ease-in-out infinite;
+}
+.scandal-btn{ animation:ringPulse 2.6s ease-out infinite; }
+
+/* ---------- دفتر الفضايح ---------- */
+.book-nav button{ transition:transform .3s ease, background .25s ease; }
+.book-nav button:hover{ transform:scale(1.1) rotate(-8deg); }
+
+/* ---------- الفوتر ---------- */
+.brand-credit{ transition:transform .3s ease, color .2s ease; }
+.brand-credit:hover{ transform:translateY(-2px); }
+
+@media(max-width:640px){
+  .hero-center::before, .hero-center::after{ display:none; }
+}
+</style>
+</head>
+<body class="gate-locked">
+
+<!-- ===== بوابة كلمة السر ===== -->
+<div class="pw-gate" id="pwGate">
+  <div class="pw-gate-inner">
+    <div class="pw-gate-photo-wrap">
+      <img src="image/one.jpeg" alt="" class="pw-gate-photo" onerror="this.style.display='none'">
+      <div class="pw-gate-caption" id="pwGateCaption">افتحي ذكرياتنا</div>
+      <div class="pw-gate-celebrate" id="pwGateCelebrate">🤍✨💗</div>
+    </div>
+    <div class="pw-gate-form">
+      <input type="password" id="pwGateInput" class="pw-gate-input" inputmode="numeric" placeholder="اكتبي الباسورد">
+      <button id="pwGateBtn" class="pw-gate-btn" type="button">افتحي 🤍</button>
+      <div class="pw-gate-error" id="pwGateError" hidden>الباسورد غلط، جربي تاني</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-center">
+    <div class="photo-frame" aria-hidden="true">
+      <img src="image/hero.jpeg" alt="" class="photo-frame-img" onerror="this.style.display='none'">
+      <div class="heart-sparkles">
+        <span>✦</span><span>✦</span><span>✦</span><span>✦</span><span>✦</span><span>✦</span>
+      </div>
+    </div>
+    <span class="eyebrow">حكاية صداقة</span>
+    <h1>آلاء <span>&</span> بسملة</h1>
+    <div class="hero-underline" aria-hidden="true">
+      <svg viewBox="0 0 300 20" preserveAspectRatio="none"><path d="M4 14 Q150 2 296 12" fill="none" stroke="var(--rose)" stroke-width="3" stroke-linecap="round"/></svg>
+    </div>
+    <p class="sub">من أول لقاء لحد دلوقتي… كل يوم مع بعض كان حكاية تستاهل إنها تتكتب.</p>
+  </div>
+</section>
+
+<!-- ===== LIVE FRIENDSHIP COUNTER ===== -->
+<section id="live-counter">
+  <div class="wrap">
+    <div class="section-head reveal"><span class="eyebrow">عداد الصداقة</span><h2>صداقتنا عمرها كام؟</h2></div>
+    <div class="counter-grid reveal" id="live-counter-grid">
+      <div class="counter-box"><b id="lc-years">٠</b><span>سنين</span></div>
+      <div class="counter-box"><b id="lc-months">٠</b><span>شهور</span></div>
+      <div class="counter-box"><b id="lc-days">٠</b><span>أيام</span></div>
+    </div>
+    <p class="counter-note">وعدّ لسه شغال... 🤍</p>
+  </div>
+</section>
+
+<!-- ===== البداية ===== -->
+<section id="start">
+  <div class="wrap">
+    <div class="section-head reveal"><span class="eyebrow">إزاي بدأت الصداقة</span><h2>البداية</h2></div>
+    <div class="note reveal">
+      اتعرفنا سنة ٢٠١٥ في أول يوم دراسة… محدش كان يتخيل إن قعدة عادية جنب بعض هتتحول لصداقة عمر. من ساعتها واحنا مع بعض في كل حاجة، الكويس والوحش.
+    </div>
+  </div>
+</section>
+
+<!-- ===== TIMELINE ===== -->
+<section id="timeline" class="alt">
+  <div class="wrap">
+    <div class="section-head reveal"><span class="eyebrow">خط الزمن</span><h2>لحظات فارقة</h2></div>
+    <div class="timeline">
+      <div class="t-item reveal"><div class="t-dot"></div><div class="t-year">2023</div>
+        <div class="t-card"><h3>أول لقاء</h3><p>اتعرفنا أول مرة وحسينا إن في حاجة هتكبر.</p></div></div>
+      <div class="t-item reveal"><div class="t-dot"></div><div class="t-year">2024</div>
+        <div class="t-card"><h3>وقفة في وقت صعب</h3><p>اللحظة اللي أثبتت إن الصداقة دي سند برضو.</p></div></div>
+      <div class="t-item reveal"><div class="t-dot"></div><div class="t-year">2026</div>
+        <div class="t-card"><h3>لسه مستمرين</h3><p>وكل يوم بنضيف ذكرى جديدة.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== THEN & NOW ===== -->
+<section id="then-now">
+  <div class="wrap">
+    <div class="section-head reveal"><span class="eyebrow">فرق السنين</span><h2>أول صورة و صورتنا الوقتي</h2></div>
+    <div class="then-now reveal">
+<div class="tn-photo"><img class="photo-ph" src="Image/2023.webp" alt="يومها"><p>2023</p></div>
+      <div class="tn-arrow">←</div>
+      <div class="tn-photo"><img class="photo-ph" src="Image/2026.jpeg" alt="دلوقتي"><p>دلوقتي</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GALLERY (9) ===== -->
+<section id="gallery" class="alt">
+  <div class="wrap">
+    <div class="section-head reveal"><span class="eyebrow">ألبوم الصور</span><h2>لحظات ملتقطة</h2></div>
+    <div class="gallery">
+      <figure class="polaroid reveal"><img class="photo-placeholder" src="image/1.jpeg" alt="حط صورتك"><figcaption>اقرب صورة لقلبنا  </figcaption></figure>
+      <figure class="polaroid reveal"><img class="photo-placeholder" src="image/2.jpeg" alt="رحلة السفر"><figcaption>الملاهي </figcaption></figure>
+      <figure class="polaroid reveal"><img class="photo-placeholder" src="image/3.jpeg" alt="قعدة كافيه"><figcaption>قعدة كافيه</figcaption></figure>
+      <figure class="polaroid reveal"><img class="photo-placeholder" src="image/4.jpeg" alt="عيد ميلاد"><figcaption>عيد ميلادك</figcaption></figure>
+      <figure class="polaroid reveal"><img class="photo-placeholder" src="image/2026.jpeg" alt="عيد ميلاد"><figcaption>البني  </figcaption></figure>
+      <figure class="polaroid reveal"><img class="photo-placeholder" src="image/6.jpeg" alt="عيد ميلاد"><figcaption>عيد ميلادي</figcaption></figure>
+      <figure class="polaroid reveal"><img class="photo-placeholder" src="image/14.jpeg" alt="سهرة"><figcaption>كلية</figcaption></figure>
+      <figure class="polaroid reveal"><img class="photo-placeholder" src="image/15.jpeg" alt="تخرج"><figcaption>رمضان</figcaption></figure>
+      <figure class="polaroid reveal"><img class="photo-placeholder" src="image/16.jpeg" alt="جيم"><figcaption> جامعه </figcaption></figure>
+      <figure class="polaroid reveal"><img class="photo-placeholder" src="image/11.jpeg" alt="مباراة"><figcaption>العقد</figcaption></figure>
+      <figure class="polaroid reveal"><img class="photo-placeholder" src="image/12.jpeg" alt="مباراة"><figcaption>تدريب</figcaption></figure>
+      <figure class="polaroid reveal"><img class="photo-placeholder" src="image/13.jpeg" alt="مباراة"><figcaption>الحفلة</figcaption></figure>
+      <figure class="polaroid reveal"><img class="photo-placeholder" src="image/7.jpeg" alt="الساحل"><figcaption>مناقشتنا</figcaption></figure>
+      <figure class="polaroid reveal"><img class="photo-placeholder" src="image/8.jpeg" alt="الساحل"><figcaption>تخرجنا</figcaption></figure>
+      <figure class="polaroid reveal"><img class="photo-placeholder" src="image/9.jpeg" alt="الساحل"><figcaption>مناقشتنا</figcaption></figure>
+
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== FUNNY MOMENTS (4) ===== -->
+<section id="funny">
+  <div class="wrap">
+    <div class="section-head reveal"><span class="eyebrow">من غير مقدمات</span><h2>لحظات مضحكة</h2></div>
+    <div class="funny-grid">
+      <div class="funny-card reveal"><p>"فاكره لما توهنا وحنا راحين ميس وقعدنا نلف ساعتين؟"</p><span class="tag">ذكرى #1</span></div>
+      <div class="funny-card reveal"><p>" لما الاتوبيس عطل بينا علي الطريق وحنا رايحين الحفلة 😂"</p><span class="tag">ذكرى #2</span></div>
+      <div class="funny-card reveal"><p>"يوم ما هزرنا لحد ما دمعنا من الضحك."</p><span class="tag">ذكرى #3</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LETTER (single) ===== -->
+<section id="letter" class="alt">
+  <div class="wrap">
+    <div class="section-head reveal"><span class="eyebrow">من القلب</span><h2>كلمتين لآلاء وبسملة</h2></div>
+    <div class="note reveal">
+إلى صاحبتي وأجمل صدفة في حياتي.. ❤️
+
+يمكن الكلام مش هيكفي أو يوصف قد إيه وجودك فرق معايا، بس أنا ممتنة لكل لحظة جمعتنا، لكل ضحكة، وكل موقف، وكل مرة كنتِ فيها جنبي من غير ما أطلب.
+
+يارب تفضلي دايمًا في حياتي، ونفضل نكبر سوا ونشوف أحلام بعض وهي بتتحقق.
+
+بحبك يا صاحبتي، وربنا يديمك نعمة في حياتي العمر كله. 🤍
+      <span class="signoff">بحبك 🤍</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VIDEO ===== -->
+
+<section id="video" class="alt">
+  <div class="wrap">
+    <div class="section-head reveal"><span class="eyebrow">فيديو</span><h2>ذكرى بتتحرك</h2></div>
+    <div class="video-wrap reveal">
+      
+      <div class="video-ph"> <video controls width="100%" style="border-radius:20px;">
+    <source src="Image/WhatsApp Video 2026-09-26 at 2.53.30 PM (1).mp4" type="video/mp4">
+    متصفحك لا يدعم تشغيل الفيديو.
+</video></div>
+      <p class="hint" style="text-align:center; margin-top:10px; color:var(--ink-faint); font-size:.85rem;"> </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PLACES ===== -->
+<section id="places">
+  <div class="wrap">
+    <div class="section-head reveal"><span class="eyebrow">أماكننا</span><h2>أماكن بتجمعنا</h2></div>
+    <div class="places">
+      <div class="place reveal"><span class="icon">☕</span><h4> طرح البحر</h4><p>مكان القعدات الطويلة.</p></div>
+      <div class="place reveal"><span class="icon">🏖️</span><h4>خروجة العيد</h4><p>رحلة كل صيف ما بتتفوتش.</p></div>
+      <div class="place reveal"><span class="icon">🎓</span><h4>الكلية   </h4><p>أول مكان اتقابلنا فيه.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STATS ===== -->
+<section id="stats" class="alt">
+  <div class="wrap">
+    <div class="section-head reveal"><span class="eyebrow">بالأرقام</span><h2>احنا سوا كام؟</h2></div>
+    <div class="stats">
+      <div class="stat reveal"><b data-target="3">0</b><span>سنين صداقة</span></div>
+      <div class="stat reveal"><b data-target="2">0</b><span>رحلة مع بعض</span></div>
+      <div class="stat reveal"><b data-target="1000">0</b><span>ضحكة ما اتعدتش</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BUCKET LIST ===== -->
+<section id="bucket">
+  <div class="wrap">
+    <div class="section-head reveal"><span class="eyebrow">أحلام واستنى شوية</span><h2> قايمة أحلامنا </h2></div>
+    <div class="bucket-add reveal">
+      <input type="text" id="bucket-input" class="bucket-input" placeholder="اكتب حلم جديد وزوّده...">
+      <button id="bucket-add-btn" class="bucket-add-btn" type="button">إضافة +</button>
+    </div>
+    <div class="bucket-wrap reveal">
+      <div class="bucket-col">
+        <h3>لسه هنعملها</h3>
+        <ul class="bucket-list" id="pending-list"></ul>
+      </div>
+      <div class="bucket-col">
+        <h3>خلصنا ✓</h3>
+        <ul class="bucket-list" id="done-list"></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== زرار الفضايح ===== -->
+<section id="scandal-section" class="alt">
+  <div class="wrap scandal-wrap reveal">
+    <button id="scandal-btn" class="scandal-btn" type="button"> Vibes 😏</button>
+  </div>
+</section>
+
+<!-- ===== MEMORY BOOK / الفضايح (مخفي لحد ما يتضغط الزرار) ===== -->
+<section id="memory-book" style="display:none ;object-fit:cover;">
+  <div class="wrap">
+    <div class="section-head reveal"><span class="eyebrow">قلّب واتفرج</span></div>
+    <div class="book-outer reveal">
+      <div class="book" id="book"></div>
+      <div class="book-nav">
+        <button id="prev-page">→</button>
+        <span id="page-indicator"></span>
+        <button id="next-page">←</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <a class="brand-credit" href="https://linktr.ee/techriamarkting" target="_blank" rel="noopener">
+    <span class="translatable">صُنع بواسطة</span> <span>Techria Team</span>
+  </a></footer>
+
+<script>
+  // ---- بوابة كلمة السر ----
+  const GATE_PASSWORD = '2023';
+  const pwGate = document.getElementById('pwGate');
+  const pwGateInput = document.getElementById('pwGateInput');
+  const pwGateBtn = document.getElementById('pwGateBtn');
+  const pwGateError = document.getElementById('pwGateError');
+  const pwGateCaption = document.getElementById('pwGateCaption');
+  const pwGateCelebrate = document.getElementById('pwGateCelebrate');
+
+  function unlockGate(){
+    pwGateError.hidden = true;
+    pwGateCaption.classList.add('hide');
+    pwGateCelebrate.classList.add('show');
+    burstConfetti(28);
+    setTimeout(()=>{
+      pwGate.classList.add('hidden');
+      document.body.classList.remove('gate-locked');
+      setTimeout(()=>{ pwGate.style.display = 'none'; }, 650);
+    }, 1100);
+  }
+
+  function tryGatePassword(){
+    const typed = pwGateInput.value.trim();
+    if(typed === GATE_PASSWORD){
+      unlockGate();
+    } else {
+      pwGateInput.classList.remove('wrong');
+      void pwGateInput.offsetWidth;
+      pwGateInput.classList.add('wrong');
+      pwGateError.hidden = false;
+    }
+  }
+
+  pwGateBtn.addEventListener('click', tryGatePassword);
+  pwGateInput.addEventListener('keydown', (e)=>{
+    if(e.key === 'Enter'){ e.preventDefault(); tryGatePassword(); }
+  });
+  pwGateInput.addEventListener('input', ()=>{ pwGateInput.classList.remove('wrong'); });
+
+  // ---- scroll reveal ----
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:.15});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // ---- stat counters ----
+  const statIO = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        const el = entry.target, target = +el.dataset.target;
+        let cur = 0; const step = Math.max(1, Math.round(target/40));
+        const iv = setInterval(()=>{ cur += step; if(cur>=target){cur=target; clearInterval(iv);} el.textContent = cur.toLocaleString('ar-EG'); }, 30);
+        statIO.unobserve(el);
+      }
+    });
+  }, {threshold:.5});
+  document.querySelectorAll('.stat b').forEach(s=>statIO.observe(s));
+
+  // ---- live friendship counter ----
+  const FRIEND_START_DATE = new Date('2023-04-01T00:00:00');
+  function updateLiveCounter(){
+    const now = new Date();
+    let years = now.getFullYear() - FRIEND_START_DATE.getFullYear();
+    let months = now.getMonth() - FRIEND_START_DATE.getMonth();
+    let days = now.getDate() - FRIEND_START_DATE.getDate();
+    if(days < 0){
+      months -= 1;
+      const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+      days += prevMonth.getDate();
+    }
+    if(months < 0){ years -= 1; months += 12; }
+    const y = document.getElementById('lc-years');
+    const m = document.getElementById('lc-months');
+    const d = document.getElementById('lc-days');
+    if(y && m && d){
+      y.textContent = years.toLocaleString('ar-EG');
+      m.textContent = months.toLocaleString('ar-EG');
+      d.textContent = days.toLocaleString('ar-EG');
+    }
+  }
+  updateLiveCounter();
+  setInterval(updateLiveCounter, 60000);
+
+  // ---- confetti / celebration burst (reusable) ----
+  function burstConfetti(count = 32){
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(prefersReduced) return;
+    const emojis = ['🤍','💗','✨','💕'];
+    for(let i=0; i<count; i++){
+      const piece = document.createElement('span');
+      piece.className = 'confetti-piece';
+      piece.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+      const left = Math.random()*100;
+      const duration = 2.2 + Math.random()*1.8;
+      const delay = Math.random()*0.35;
+      const size = 0.9 + Math.random()*0.9;
+      piece.style.left = left + 'vw';
+      piece.style.fontSize = size + 'rem';
+      piece.style.animationDuration = duration + 's';
+      piece.style.animationDelay = delay + 's';
+      document.body.appendChild(piece);
+      setTimeout(()=> piece.remove(), (duration+delay)*1000 + 200);
+    }
+  }
+
+  // ---- bucket list (persisted in localStorage) ----
+  const BUCKET_STORAGE_KEY = 'alaa-basmala-bucket-list-v1';
+  const defaultBucketData = [
+    {text:"رحلة السفاري", done:false},
+    {text:"نتعلم غطس مع بعض", done:false},
+    {text:"نعمل رحلة برا مصر", done:false},
+    {text:"نحضر كونسرت", done:true},
+    {text:"نعمل تريب كامبينج", done:false},
+    {text:"نصور فيديو مقلب", done:true},
+  ];
+
+  function loadBucketData(){
+    try{
+      const saved = localStorage.getItem(BUCKET_STORAGE_KEY);
+      if(saved){
+        const parsed = JSON.parse(saved);
+        if(Array.isArray(parsed) && parsed.length){
+          return parsed
+            .filter(item => item && typeof item.text === 'string' && item.text.trim())
+            .map(item => ({ text: item.text, done: !!item.done }));
+        }
+      }
+    } catch(err){ console.warn('تعذّر تحميل قايمة الأحلام المحفوظة:', err); }
+    return defaultBucketData.map(item => ({...item}));
+  }
+
+  function saveBucketData(){
+    try{
+      localStorage.setItem(BUCKET_STORAGE_KEY, JSON.stringify(bucketData));
+    } catch(err){ console.warn('تعذّر حفظ قايمة الأحلام:', err); }
+  }
+
+  const bucketData = loadBucketData();
+
+  function addBucketItem(text){
+    const clean = text.trim();
+    if(!clean) return;
+    bucketData.push({text: clean, done:false});
+    saveBucketData();
+    renderBucket();
+  }
+
+  function escapeHtml(str){
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  function deleteBucketItem(i){
+    bucketData.splice(i, 1);
+    saveBucketData();
+    renderBucket();
+  }
+
+  function renderBucket(){
+    const pending = document.getElementById('pending-list');
+    const done = document.getElementById('done-list');
+    pending.innerHTML = ''; done.innerHTML = '';
+    bucketData.forEach((item, i)=>{
+      const li = document.createElement('li');
+      li.className = 'bucket-item' + (item.done ? ' done' : '');
+      li.innerHTML = `<span class="box">${item.done ? '✓' : ''}</span><span class="txt">${escapeHtml(item.text)}</span><button type="button" class="del-btn" aria-label="حذف">✕</button>`;
+      li.querySelector('.txt').onclick = ()=>{ bucketData[i].done = !bucketData[i].done; saveBucketData(); renderBucket(); };
+      li.querySelector('.box').onclick = ()=>{ bucketData[i].done = !bucketData[i].done; saveBucketData(); renderBucket(); };
+      li.querySelector('.del-btn').onclick = (e)=>{ e.stopPropagation(); deleteBucketItem(i); };
+      (item.done ? done : pending).appendChild(li);
+    });
+    if(!pending.children.length) pending.innerHTML = '<p class="bucket-empty">خلصتوا كل حاجة! 🎉</p>';
+    if(!done.children.length) done.innerHTML = '<p class="bucket-empty">لسه ملحقتوش حاجة</p>';
+  }
+  renderBucket();
+
+  // ---- إضافة حلم جديد للقايمة ----
+  const bucketInput = document.getElementById('bucket-input');
+  const bucketAddBtn = document.getElementById('bucket-add-btn');
+  bucketAddBtn.addEventListener('click', ()=>{
+    addBucketItem(bucketInput.value);
+    bucketInput.value = '';
+    bucketInput.focus();
+  });
+  bucketInput.addEventListener('keydown', (e)=>{
+    if(e.key === 'Enter'){ e.preventDefault(); bucketAddBtn.click(); }
+  });
+
+  // ---- memory book (الفضايح): 5 صور ----
+  const bookPages = [
+    {type:"image", src:"image/f1.jpeg", title:"صورة ١", text:"حط تعليق مضحك هنا 😂"},
+    {type:"image", src:"image/f2.jpeg", title:"صورة ٢", text:"حط تعليق مضحك هنا 😂"},
+    {type:"image", src:"image/f3.jpeg", title:"صورة ٣", text:"حط تعليق مضحك هنا 😂"},
+    {type:"image", src:"image/f4.jpeg", title:"صورة ٤", text:"حط تعليق مضحك هنا 😂"},
+    {type:"image", src:"image/f5.jpeg", title:"صورة ٥", text:"حط تعليق مضحك هنا 😂"},
+  ];
+  let pageIndex = 0;
+  const bookEl = document.getElementById('book');
+  const indicator = document.getElementById('page-indicator');
+  function renderPage(){
+    const p = bookPages[pageIndex];
+    const mediaHtml = p.type === "video"
+      ? `<video controls><source src="${p.src}" type="video/mp4">متصفحك لا يدعم الفيديو.</video>`
+      : `<img src="${p.src}" alt="${p.title}">`;
+    bookEl.innerHTML = `<div class="page"><div class="ph">${mediaHtml}</div></div>`;
+    indicator.textContent = `صفحة ${arNum(pageIndex+1)} من ${arNum(bookPages.length)}`;
+  }
+  function arNum(n){ return n.toLocaleString('ar-EG'); }
+  function turnPage(dir){
+    const pageDiv = bookEl.querySelector('.page');
+    if(!pageDiv) return;
+    pageDiv.classList.add('turning');
+    setTimeout(()=>{
+      pageIndex = (pageIndex + dir + bookPages.length) % bookPages.length;
+      renderPage();
+    }, 300);
+  }
+  document.getElementById('next-page').onclick = ()=> turnPage(1);
+  document.getElementById('prev-page').onclick = ()=> turnPage(-1);
+  renderPage();
+
+  // ---- زرار الفضايح: يظهر سيكشن الفضايح لما يتضغط ----
+  const scandalBtn = document.getElementById('scandal-btn');
+  const memoryBookSection = document.getElementById('memory-book');
+  scandalBtn.addEventListener('click', ()=>{
+    memoryBookSection.style.display = 'block';
+    memoryBookSection.querySelectorAll('.reveal').forEach(el=> el.classList.add('in'));
+    memoryBookSection.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+</script>
+</body>
+</html>
