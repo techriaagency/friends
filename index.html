@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>حكاية آلاء وبسملة</title>
-<link rel="icon" type="image/png" href="LOGO.png">
+<link rel="icon" type="image/png" href="image/LOGO.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Great+Vibes&family=Lalezar&family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
@@ -98,10 +98,10 @@
   .t-item{position:relative; width:50%; padding:0 40px 66px;}
   .t-item:nth-child(odd){padding-right:40px; text-align:left;}
   .t-item:nth-child(even){margin-right:50%; padding-left:40px; text-align:right;}
-  .t-dot{position:absolute; top:4px; width:14px; height:14px; border-radius:50%; background:var(--sage);
+  .t-dot{position:absolute; top:6px; width:14px; height:14px; border-radius:50%; background:var(--sage);
     box-shadow:0 0 0 5px var(--bg), 0 0 0 6px var(--sage);}
   .t-item:nth-child(odd) .t-dot{right:-7px;} .t-item:nth-child(even) .t-dot{left:-7px;}
-  .t-year{font-family:'Lalezar'; color:var(--sage-deep); font-size:1.4rem;}
+  .t-year{font-family:'Lalezar'; color:var(--sage-deep); font-size:1.4rem; line-height:1; display:block;}
   .t-card{background:var(--card); padding:22px 24px; border-radius:6px; margin-top:10px; box-shadow:var(--shadow);
     border:1px solid var(--line); border-top:3px solid var(--rose);}
   .t-card h3{font-weight:500; font-size:1.05rem; margin-bottom:6px;}
@@ -138,7 +138,10 @@
   .tn-photo:first-child .photo-ph{background:linear-gradient(135deg,#F6E3DF,#E9C4C9);}
   .tn-photo:last-child .photo-ph{background:linear-gradient(135deg,#FBDCE1,#E2647B);}
   .tn-photo p{text-align:center; margin-top:12px; font-weight:700; color:var(--ink-soft);}
-  .tn-arrow{font-size:1.8rem; color:var(--sage);}
+  .tn-arrow{font-size:1.8rem; color:var(--sage); display:inline-block; transition:transform .3s ease;}
+  @media(max-width:700px){
+    .tn-arrow{ transform:rotate(90deg); }
+  }
 
   /* ===== GALLERY ===== */
   .gallery{display:grid; grid-template-columns:repeat(3,1fr); gap:26px; max-width:920px; margin:0 auto;}
@@ -545,7 +548,7 @@ body::before{
   <div class="wrap">
     <div class="section-head reveal"><span class="eyebrow">إزاي بدأت الصداقة</span><h2>البداية</h2></div>
     <div class="note reveal">
-      اتعرفنا سنة ٢٠١٥ في أول يوم دراسة… محدش كان يتخيل إن قعدة عادية جنب بعض هتتحول لصداقة عمر. من ساعتها واحنا مع بعض في كل حاجة، الكويس والوحش.
+      اتعرفنا سنة ٢٠٢٣ محدش كان يتخيل إن قعدة عادية جنب بعض هتتحول لصداقة عمر. من ساعتها واحنا مع بعض في كل حاجة، الكويس والوحش.
     </div>
   </div>
 </section>
@@ -571,8 +574,7 @@ body::before{
     <div class="section-head reveal"><span class="eyebrow">فرق السنين</span><h2>أول صورة و صورتنا الوقتي</h2></div>
     <div class="then-now reveal">
 <div class="tn-photo"><img class="photo-ph" src="Image/2023.webp" alt="يومها"><p>2023</p></div>
-      <div class="tn-arrow">←</div>
-      <div class="tn-photo"><img class="photo-ph" src="Image/2026.jpeg" alt="دلوقتي"><p>دلوقتي</p></div>
+      <div class="tn-photo"><img class="photo-ph" src="Image/2026.jpeg" alt="دلوقتي"><p>2026</p></div>
     </div>
   </div>
 </section>
@@ -580,7 +582,7 @@ body::before{
 <!-- ===== GALLERY (9) ===== -->
 <section id="gallery" class="alt">
   <div class="wrap">
-    <div class="section-head reveal"><span class="eyebrow">ألبوم الصور</span><h2>لحظات ملتقطة</h2></div>
+    <div class="section-head reveal"><span class="eyebrow">ألبوم الصور</span><h2>لحظات ملتـــقطة</h2></div>
     <div class="gallery">
       <figure class="polaroid reveal"><img class="photo-placeholder" src="image/1.jpeg" alt="حط صورتك"><figcaption>اقرب صورة لقلبنا  </figcaption></figure>
       <figure class="polaroid reveal"><img class="photo-placeholder" src="image/2.jpeg" alt="رحلة السفر"><figcaption>الملاهي </figcaption></figure>
@@ -830,12 +832,14 @@ body::before{
   // ---- bucket list (persisted in localStorage) ----
   const BUCKET_STORAGE_KEY = 'alaa-basmala-bucket-list-v1';
   const defaultBucketData = [
-    {text:"رحلة السفاري", done:false},
+    {text:"نلف العالم ", done:false},
     {text:"نتعلم غطس مع بعض", done:false},
     {text:"نعمل رحلة برا مصر", done:false},
-    {text:"نحضر كونسرت", done:true},
+    {text:"نتخرج ", done:true},
     {text:"نعمل تريب كامبينج", done:false},
     {text:"نصور فيديو مقلب", done:true},
+    {text:"اشتغلنا سوا ", done:true},
+    {text:" روحنا جيم سوا ", done:true},
   ];
 
   function loadBucketData(){
